@@ -374,12 +374,11 @@ void Main_printBlocks(void)
 }
 void Main_initialize(void)
 { //Ä¬ÈÏ³õÊ¼»¯
-	if (Dict_readdic() && Dict_openLib() && Gui_openhzLib())
+	if (Dict_readdic() && Dict_openLib() && Gui_openhzLib() && Deep_init())
 	{
 		Gui_initialize();
 		Gui_setbgColor(GUI_BLACK);
 		Gui_setfgColor(GUI_GRAY);
-		Deep_init();
 		Deep_push("INPUT:");
 	}
 	else

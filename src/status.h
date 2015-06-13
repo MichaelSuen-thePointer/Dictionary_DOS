@@ -11,6 +11,6 @@
 void Deep_show		(Rectangle border);
 void Deep_pop		(void);
 void Deep_push		(const char* str);
-void Deep_init		(void);
+int  Deep_init		(void);
 void Deep_uninit	(void);
 #endif

@@ -2,9 +2,10 @@
 
 static Vector recursionDeep;
 
-void Deep_init(void)
+int Deep_init(void)
 {
-	recursionDeep = Vector_new(10);
+	recursionDeep = Vector_new(0);
+	return recursionDeep != NULL;
 }
 void Deep_push(const char* str)
 {

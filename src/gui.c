@@ -9,6 +9,7 @@
 static muint Gui_fgcolor;	//32位无符号前景色
 static muint Gui_bgcolor;	//32位无符号背景色
 static FILE* hzLib;			//汉字库文件句柄
+static Rectangle zeroRect;
 
 static void			Gui_printDotMat(const char* matrix, mint width, mint height, mint x, mint y);	//输出witdh*height点阵
 static const char*	Gui_getHanziDotMat(const char* letter);	//获取汉字点阵
@@ -212,7 +213,7 @@ void Rectangle_print(Rectangle rect, bool isFill)
 void Rectangle_highlight(Rectangle rect)
 {
 	static Rectangle lastOne;
-	if (!bineq(lastOne, rect))
+	if (!bineq(lastOne, zeroRect) && !bineq(lastOne, rect))
 	{
 		Rectangle_unhighlight(lastOne);
 		setcolor(GUI_GREEN);
