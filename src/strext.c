@@ -31,13 +31,15 @@ Vector Str_split(char* text, char delimiter)
 	char* head;
 	Vector fragments = Vector_new(10);
 
-	while ((head = strchr(text, delimiter)) != NULL)
+	while (*text && (head = strchr(text, delimiter)) != NULL)
 	{
 		Vector_push_back(fragments, (void*)Atom_new(text, head - text));
 		text = head + 1;
 	}
-	Vector_push_back(fragments, (void*)Atom_string(text));
-
+	if (*text)
+	{
+		Vector_push_back(fragments, (void*)Atom_string(text));
+	}
 	return fragments;
 }
 

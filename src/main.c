@@ -23,8 +23,15 @@ static struct tag_status {
 	bool exitFlag;
 	mint matchPattern;
 	Rectangle inputRect, explanRect, examplRect,
-			  searchRect, chooseRect, statusRect;
-} status;
+		searchRect, chooseRect, statusRect;
+} status = {0, WILDCARD,
+0, 0, 1023, 31,
+176, 32, 847, 255,
+176, 256, 847, 735,
+0, 32, 175, 735,
+848, 32, 1023, 735,
+0, 736, 1023, 767
+};
 
 int main(void)
 {
@@ -143,6 +150,7 @@ void Main_command(char* input)
 		str = strcpy(str, Main_helpDoc);
 		Rectangle_eraseContent(status.examplRect);
 		Gui_printText(str, status.examplRect);
+		Ctrl_readKey();
 		free(str);
 	}
 	else if (streq(first, "about"))
@@ -151,6 +159,7 @@ void Main_command(char* input)
 		str = strcpy(str, Main_aboutDoc);
 		Rectangle_eraseContent(status.examplRect);
 		Gui_printText(str, status.examplRect);
+		Ctrl_readKey();
 		free(str);
 	}
 	else
@@ -337,10 +346,10 @@ void Main_statusInitiailze(void)
 	status.explanRect.m_left = 176;
 	status.explanRect.m_top = 32;
 	status.explanRect.m_right = 847;
-	status.explanRect.m_bottom = 319;
+	status.explanRect.m_bottom = 255;
 
 	status.examplRect.m_left = 176;
-	status.examplRect.m_top = 320;
+	status.examplRect.m_top = 256;
 	status.examplRect.m_right = 847;
 	status.examplRect.m_bottom = 735;
 

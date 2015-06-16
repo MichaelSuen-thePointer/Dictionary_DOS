@@ -213,9 +213,12 @@ void Rectangle_print(Rectangle rect, bool isFill)
 void Rectangle_highlight(Rectangle rect)
 {
 	static Rectangle lastOne;
-	if (!bineq(lastOne, zeroRect) && !bineq(lastOne, rect))
+	if (!bineq(lastOne, rect))
 	{
-		Rectangle_unhighlight(lastOne);
+		if (!bineq(lastOne, zeroRect))
+		{
+			Rectangle_unhighlight(lastOne);
+		}
 		setcolor(GUI_GREEN);
 		rectangle(rect.m_left, rect.m_top, rect.m_right, rect.m_bottom);
 		rectangle(rect.m_left + 2, rect.m_top + 2, rect.m_right - 2, rect.m_bottom - 2);
